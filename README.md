@@ -27,27 +27,36 @@ Check this repository out and build your own container with the russian language
 ```
 git clone https://github.com/karpechenkovkonstantin/yopass-russian.git
 cd yopass-russian
-docker build -t kkd/yopassde -f Dockerfile
+docker build -t kkd/yopass-ru -f Dockerfile
 ```
 
 ---
 ## Русский 
 
-Deutsche Sprachdatei für Yopass von Johan Haals (jhaals/yopass)   
-[Yopass - Share Secrets Securely](https://github.com/jhaals/yopass)
+Русский перевод для Yopass разработаного Johan Haals (jhaals/yopass)   
+[Yopass - Делись секретами безопасно](https://github.com/jhaals/yopass)
 
 ### Установка
 
-Kopiere die Datei website/public/locales/de.json in das entsprechende Verzeichnis der yopass-Installation.
+Скопируйте файл website/public/locales/ru.json в аналогичный каталог вашего Yopass.
 
-Die Sprachdatei wird automatisch erkannt und genutzt, wenn der Browser die Sprache an yopass übermittelt.
+Yopass автоматически обнаружит новый язык и подключит его если он выбран в качестве языка браузера. Предпочтительный язык браузера, определяется на основе информации в следующем порядке:
+
+ - строка запроса (добавьте ?lng=LANGUAGE в URL)
+ - cookie-файл (установите следующее значение cookie i18next=LANGUAGE)
+ - локальное хранилище (установите ключ i18nextLng=LANGUAGE)
+ - сессионное хранилище (установите ключ i18nextLng=LANGUAGE)
+ - браузер (язык браузер)
+ - html-тэг (значение html lang="LANGUAGE")
+
+Список можно изменить в параметрах i18n в ./src/i18n.tsx. Подробности на https://github.com/i18next/i18next-browser-languageDetector.
 
 ### Контейнер
 
-Einfach dieses Repo klonen und einen eigenen Container bauen, der die deutsche Sprachdatei in das Original-Yopass-Image von docker.io integriert.
+На основе этого репозитория вы можете создать свой docker-образ на русском языке взяв оригинальный образ Yopass-Image из docker.io.
 
 ```
-git clone https://github.com/Anturix/yopass-german.git
-cd yopass-german
-docker build -t anturix/yopassde -f Dockerfile
+git clone https://github.com/karpechenkovkonstantin/yopass-russian.git
+cd yopass-russian
+docker build -t kkd/yopass-ru -f Dockerfile
 ```
